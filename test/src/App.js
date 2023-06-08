@@ -4,8 +4,21 @@ import { useState } from 'react'
 
 function App() {
 
+  const [copyData, setCopyData] = useState("Webview용 clipboard test")
+
   const doCopy = text => {
-   
+    // 흐음 1.
+    if (navigator.clipboard) {
+      // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
+      navigator.clipboard
+        .writeText(copyData)
+        .then(() => {
+          alert("클립보드에 복사되었습니다.");
+        })
+        .catch(() => {
+          alert("복사를 다시 시도해주세요.");
+        });
+    } else {
       // 흐름 2.
       if (!document.queryCommandSupported("copy")) {
         return alert("복사하기가 지원되지 않는 브라우저입니다.");
@@ -13,7 +26,7 @@ function App() {
 
       // 흐름 3.
       const textarea = document.createElement("textarea");
-      textarea.value = text;
+      textarea.value = copyData;
       textarea.style.top = 0;
       textarea.style.left = 0;
       textarea.style.position = "fixed";
@@ -29,15 +42,16 @@ function App() {
       // 흐름 6.
       document.body.removeChild(textarea);
       alert("클립보드에 복사되었습니다.");
+    }
   };
 
-  const [copyData, setCopyData] = useState("Webview용 clipboard test")
+  
 
   const changeText = (text) => {
     setCopyData(text);
   }
  
-
+  
   return (
     <div className="App">
       <header className="App-header">
