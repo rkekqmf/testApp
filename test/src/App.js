@@ -8,10 +8,6 @@ function App() {
   const doCopy=() => {
     navigator.permissions.query({name:"clipboard-write"}).then((permission)=> {
       console.log(permission.state);
-
-      permission.onchange = () => {
-        console.log(permission.state);
-      }
     });
 
       navigator.clipboard.writeText(copyData)
