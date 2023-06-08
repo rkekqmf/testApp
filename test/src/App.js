@@ -42,10 +42,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-      <CopyToClipboard text={copyData} onCopy={()=>{alert("복사완료")}}><text><div id={'cliptext'}>copyData : {copyData}</div></text></CopyToClipboard>
-        <button onClick={doCopy}>버튼이요</button>
-        <input type="textfield" placehoder="clipboard check" onChange={(e)=>{changeText(e.target.value)}}></input>
+      <CopyToClipboard text={copyData} onCopy={()=>{alert("복사완료")}}><text><button>버튼이요</button></text></CopyToClipboard>
         
+        <input type="textfield" placehoder="clipboard check" onChange={(e)=>{changeText(e.target.value)}}></input>
+        <div id={'cliptext'}>copyData : {copyData}</div>
       </header>
 
     </div>
