@@ -10,7 +10,9 @@ function App() {
     setCopyData(text);
   }
   const onCopy = () => {
-    navigator.clipboard.writeText(copyData);
+    navigator.clipboard.readText().then(
+    (clipText) => (document.querySelector(".cliptext").innerText = clipText)
+  );
   }
   return (
     <div className="App">
@@ -19,7 +21,7 @@ function App() {
       
         <button onClick={onCopy}>버튼이요</button>
         <input type="textfield" placehoder="clipboard check" onChange={(e)=>{changeText(e.target.value)}}></input>
-        <div>{copyData}</div>
+        <div id={'cliptext'}>copyData : {copyData}</div>
       </header>
 
     </div>
