@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={()=>doCopy(copyData)}>버튼이요</button>
+        <button onClick={doCopy()}>버튼이요</button>
         <input type="textfield" placehoder="clipboard check" onChange={(e)=>{changeText(e.target.value)}}></input>
         <div id={'cliptext'}>copyData : {copyData}</div>
       </header>
