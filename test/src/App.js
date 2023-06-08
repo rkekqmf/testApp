@@ -6,9 +6,19 @@ function App() {
   const [copyData, setCopyData] = useState("Webview용 clipboard test")
 
   const doCopy=() => {
-      navigator.clipboard.writeText(copyData).then(()=> {
+    navigator.permissions.query({name:"clipboard-write"}).then((permission)=> {
+      console.log(permission.state);
+
+      permission.onchange = () => {
+        console.log(permission.state);
+      }
+    });
+
+      navigator.clipboard.writeText(copyData)
+      .then(()=> {
         alert("클립보드에 복사되었습니다.");
-      }).catch(()=>alert("하"))
+      })
+      .catch(()=>alert("하"))
       
   };
 
