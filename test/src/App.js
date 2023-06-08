@@ -7,6 +7,7 @@ function App() {
 
   const doCopy=() => {
     var copyText = document.getElementById("myInput");
+    copyText.focus();
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     navigator.clipboard
@@ -31,8 +32,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <button onClick={()=>{doCopy()}}>버튼이요</button>
-        <input type="textfield" placehoder="clipboard check" onChange={(e)=>{changeText(e.target.value)}}></input>
-        <div id={"myInput"}>copyData : {copyData}</div>
+        <input id={"myInput"} type="textfield" placehoder="clipboard check" value={"zzzzzz"}></input>
+        <div > </div>
       </header>
 
     </div>
