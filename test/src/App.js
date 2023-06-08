@@ -6,13 +6,17 @@ function App() {
   
 
   const doCopy=() => {
-    navigator.permissions.query({ name: "clipboard-write" }).then(p => console.log(p.state))
-    
-     navigator.clipboard.writeText(copyData)
-      .then(()=> {
-        alert("클립보드에 복사되었습니다.");
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard
+      .writeText(copyText.value)
+      .then(() => {
+        alert("successfully copied");
       })
-      .catch(()=>alert("하"))
+      .catch(() => {
+        alert("something went wrong");
+      });
   };
 
   
@@ -28,7 +32,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <button onClick={()=>{doCopy()}}>버튼이요</button>
         <input type="textfield" placehoder="clipboard check" onChange={(e)=>{changeText(e.target.value)}}></input>
-        <div id={'cliptext'}>copyData : {copyData}</div>
+        <div id={"myInput"}>copyData : {copyData}</div>
       </header>
 
     </div>
