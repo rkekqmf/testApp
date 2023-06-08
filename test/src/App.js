@@ -10,8 +10,8 @@ function App() {
     setCopyData(text);
   }
   const onCopy = () => {
-    navigator.clipboard.readText().then(
-    (clipText) => (document.querySelector(".cliptext").innerText = clipText)
+    navigator.clipboard.write(copyData).then(
+    ()=>{alert("성공")}
   );
   }
   return (
