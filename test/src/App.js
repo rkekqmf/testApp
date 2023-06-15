@@ -32,7 +32,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={()=>{doCopy()}}>버튼이요</button>
+        <button onClick={()=>{doCopy.testWorld()}}>버튼이요</button>
         <input id={"myInput"} type="textfield" placehoder="clipboard check" value={"zzzzzz"}></input>
         <div > </div>
       </header>
